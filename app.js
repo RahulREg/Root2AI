@@ -1,4 +1,3 @@
-
 let plotData = [];
 
 async function getapi(url) {
@@ -9,31 +8,12 @@ async function getapi(url) {
     data.records.forEach(ele => {
         const newObj = {};
 
-        newObj.x = [
-            "2010_11",
-            "2011_12",
-            "2012_13",
-            "2013_14",
-            "2014_15",
-            "2015_16",
-            "2016_17",
-            "2017_18",
-            "2018_19",
-          ];
-        newObj.y = [];
+       newObj.x = Object.keys(ele).slice(3);
+       newObj.y = Object.values(ele).slice(3);
+
         newObj.name = ele.products;
         newObj.type = "scatter";
-        newObj.mode = 'lines+markers'
-
-        newObj.y.push(ele._2010_11_);
-        newObj.y.push(ele._2011_12_);
-        newObj.y.push(ele._2012_13_);
-        newObj.y.push(ele._2013_14_);
-        newObj.y.push(ele._2014_15_);
-        newObj.y.push(ele._2015_16_);
-        newObj.y.push(ele._2016_17_);
-        newObj.y.push(ele._2017_18_);
-        newObj.y.push(ele._2018_19_);
+        newObj.mode = 'lines+markers';
 
         plotData.push(newObj);
     });
